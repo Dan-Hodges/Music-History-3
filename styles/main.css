@@ -1,0 +1,35 @@
+.demo-layout-transparent {
+  background: url('../images/vinyl-paper.jpg') center / cover;
+}
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+  color: white;
+}
+.songList {
+	color: white;
+	list-style-type: none;
+}
+.song-list {
+	list-style-type: none;
+	margin-top: 0;
+}
+.mdl-grid {
+	height: 95%;
+	width: 85%;
+}
+/*.mdl-cell mdl-cell--6-col {
+	margin: 0;
+}*/
+
+li {
+		font-size: 1.3em;
+}
+
+i.material-icons {
+	color: white;
+}
+
+a { 
+	text-decoration: none;
+	color: white !important;
+}
