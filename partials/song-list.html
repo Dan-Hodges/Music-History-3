@@ -1,0 +1,18 @@
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--6-col" ng-repeat="song in songs | filter:filters">
+    <div class="songList">
+      <ul class="song-list">
+        <li>
+          <h3><a>{{song.title}}
+            <button ng-click="killSong(song)" 
+            class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+              <i class="material-icons">delete</i>
+            </button>
+          </h3>
+        </li>
+        <li><a ng-click="filters.artist = song.artist">{{song.artist}}</a></li>
+        <li><a ng-click="filters.album = song.album">{{song.album}}</a></li>
+      </ul>  
+    </div>
+  </div>
+</div>

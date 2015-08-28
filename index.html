@@ -2,90 +2,58 @@
 <html>
 <head>
   <title></title>
-  <link rel ="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles/main.css">  
   <link rel="stylesheet" href="lib/mdl/material.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="styles/main.css">  
 </head>
 <body ng-app="MusicApp">
-<div ng-controller='SongCtrl'>
-  <div class="demo-layout-transparent mdl-layout mdl-js-layout">
-    <header class="mdl-layout__header mdl-layout__header--transparent">
-      <div class="mdl-layout__header-row">
-        <!-- Title -->
-        <span class="mdl-layout-title"></span>
-        <!-- Add spacer, to align navigation to the right -->
-        <div class="mdl-layout-spacer"></div>
-        <!-- Navigation -->
+  <div>
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+      <header class="mdl-layout__header mdl-layout__header--transparent">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title"></span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation -->
+          <nav class="mdl-navigation">
+          </nav>
+        </div>
+      </header>
+
+      <div class="mdl-layout__drawer" ng-controller="songPopulateCtrl">
+        <span class="mdl-layout-title">New Song</span>
         <nav class="mdl-navigation">
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="sample1" ng-model="song.title"/>
+            <label class="mdl-textfield__label" for="sample1">Title</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="sample1" ng-model="song.artist"/>
+            <label class="mdl-textfield__label" for="sample1">Album</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="sample1" ng-model="song.album"/>
+            <label class="mdl-textfield__label" for="sample1">Artist</label>
+          </div>  
+          <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" ng-click="addSong()">+</button>
         </nav>
       </div>
-    </header>
-
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">New Song</span>
-      <nav class="mdl-navigation">
-        <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="sample1" ng-model="song.title"/>
-          <label class="mdl-textfield__label" for="sample1">Title</label>
-        </div>
-        <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="sample1" ng-model="song.artist"/>
-          <label class="mdl-textfield__label" for="sample1">Album</label>
-        </div>
-        <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="sample1" ng-model="song.album"/>
-          <label class="mdl-textfield__label" for="sample1">Artist</label>
-        </div>  
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" ng-click="addSong()">+</button>
-      </nav>
+      <main class="mdl-layout__content">
+        <div ng-view></div>
+      </main>    
     </div>
-    <main class="mdl-layout__content"></main>
-  
-
-
-    <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--6-col">
-        <div class="songList">
-          <ul class="song-list" ng-repeat="song in songsLeft ">
-            <li>
-              <h3><a>{{song.title}}
-                <button ng-click="killSong(song)" 
-                class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
-                  <i class="material-icons">delete</i>
-                </button>
-              </h3>
-            </li>
-            <li><a ng-click="filterArtist(song)">{{song.artist}}</a></li>
-            <li><a ng-click="filterAlbum(song)">{{song.album}}</a></li>
-          </ul>  
-        </div>
-      </div>
-
-      <div class="mdl-cell mdl-cell--6-col">
-        <div class="songList">
-          <ul class="song-list" ng-repeat="song in songsRight">
-            <li>
-              <h3>{{song.title}}
-                <button ng-click="killSong(song)" 
-                class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
-                  <i class="material-icons">delete</i>
-                </button>
-              </h3>
-            </li>
-            <li><a ng-click="filterArtist(song)">{{song.artist}}</a></li>
-            <li><a ng-click="filterAlbum(song)">{{song.album}}</a></li>
-          </ul>  
-        </div>
-      </div>
-    </div>
-  </div>    
-</div>
+  </div>
 
   <script src="lib/mdl/material.min.js"></script>
   <script src="lib/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="lib/bower_components/lodash/lodash.js"></script>
   <script src="lib/bower_components/angular/angular.min.js"></script>
+  <script src="lib/bower_components/angular-route/angular-route.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
   <script src="app/main.js"></script>
-  <script src="app/controllers/song.js"></script>
+  <script src="app/controllers/songPopulateCtrl.js"></script>
+  <script src="app/factories/storage.js"></script>
 </body>
 </html>
