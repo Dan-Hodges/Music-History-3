@@ -1,0 +1,30 @@
+<div class="mdl-grid">
+              <button ng-click="filters.artist = ''"
+              class="resetBtn mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+                <i class="material-icons">delete</i>
+              </button>
+
+
+
+  <div class="mdl-cell mdl-cell--6-col" ng-repeat="song in trash">
+    <div class="songList">
+      <ul class="song-list">
+        <li>
+          <h3><a>{{song.title}}</h3>
+        </li>
+        <li>{{song.artist}}</li>
+        <li>{{song.album}}</li>
+        <li> 
+          <button ng-click="dblKillSong(song)" 
+          class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+            <i class="material-icons md-18">delete</i>
+          </button>
+          <button ng-click="restoreSong(song)" 
+          class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+            <i class="material-icons md-18">autorenew</i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,10 @@ app.config(['$routeProvider',
         templateUrl: 'partials/song-list.html',
         controller: 'songPopulateCtrl'
       }).
+      when('/trash', {
+        templateUrl: 'partials/trash.html',
+        controller: 'songPopulateCtrl'
+      }).
       otherwise({
         redirectTo: '/'
       });
